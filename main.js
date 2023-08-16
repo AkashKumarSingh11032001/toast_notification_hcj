@@ -1,12 +1,22 @@
 
 let toastBox = document.getElementById("toastBox");
-let SuccessMsg = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> Successfully submitted'
-let InvalidMsg = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> Fix the Error'
-let ErrorMsg = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> Invalid Input, check again'
+let SuccessMsg = '<i class="fa-solid fa-circle-check"></i>Successfully submitted'
+let ErrorMsg= '<i class="fa-solid fa-circle-xmark"></i>Fix the Error'
+let InvalidMsg = '<i class="fa-solid fa-circle-exclamation"></i> Invalid Input, check again'
 
 function showToast(msg){
     let toast = document.createElement("div");
     toast.classList.add("toast");
     toast.innerHTML = msg;
     toastBox.appendChild(toast);
+
+    if(msg.includes('Error')){
+        toast.classList.add('error');
+    }
+    if(msg.includes('Invalid')){
+        toast.classList.add("invalid") ;
+    }
+    setTimeout(()=>{
+        toast.remove();
+    },6000);
 }
